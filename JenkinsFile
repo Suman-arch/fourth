@@ -40,22 +40,33 @@ pipeline {
                 
                 bat "mvn -Dmaven.test.failure.ignore=true test -P${params.profileName} "
                    
-                }
-                post {
-                success {
-                emailext(
-                subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-                <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                )
+                    }
+                          }
+                          
+         stage('Download') {
+            steps {
+                  sh 'echo "artifact file" > generatedFile.txt'
+                  }
+                           }
+                          
+                          
+                  }
+                  post {
+                 always {
+            archiveArtifacts artifacts: 'generatedFile.txt'
+            
+            echo 'I will always say Hello again!'
                 
-                }
-            }     
-                }
+            emailext attachLog: true, attachmentsPattern: 'generatedFile.txt',
+                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                recipientProviders: [requestor()],
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+            
         }
-        }
-                            
+    }
+                  
+                  
+                  }
                             
                   
                   
