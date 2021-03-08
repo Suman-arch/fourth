@@ -56,7 +56,7 @@ pipeline {
                   attachLog:true,
                   compressLog:true,
                   subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                  recipientProviders: [[$class: 'RequesterRecipientProvider']]
+                  recipientProviders: [[$class: 'RequesterRecipientProvider']],
                   body:"""<p>EXECUTED: Job <b>\'${env.JOB_NAME}:${env.BUILD_NUMBER})\'
                   </b></p><p>View console output at "<a href="${env.BUILD_URL}"> 
                    ${env.JOB_NAME}:${env.BUILD_NUMBER}</a>"</p> 
