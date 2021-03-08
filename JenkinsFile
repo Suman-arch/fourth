@@ -48,8 +48,6 @@ pipeline {
             
             echo "Sending email "
                   }
-                           }
-       }
        post {
         success {
                   emailext(
@@ -63,5 +61,7 @@ pipeline {
                    <p><i>(Build log is attached.)</i></p>"""
                   )
                  }
+}
+}
 }
 }
