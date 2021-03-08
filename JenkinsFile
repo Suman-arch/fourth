@@ -50,8 +50,6 @@ pipeline {
                   }
        post {
         success {
-                  attachLog:true,
-                  compressLog:true,
                   mail to: 'abhishek260297@gmail.com',
                   subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                   body:"""<p>EXECUTED: Job <b>\'${env.JOB_NAME}:${env.BUILD_NUMBER})\'
