@@ -41,7 +41,16 @@ pipeline {
                 bat "mvn -Dmaven.test.failure.ignore=true test -P${params.profileName} "
                    
                      }
+                     
+                     post{
+                     
+                       success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+                     }
                             }
+                            
 
                }
 
