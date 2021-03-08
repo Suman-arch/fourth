@@ -45,29 +45,18 @@ pipeline {
                           
          stage('Download') {
             steps {
-                  sh 'echo "artifact file" > generatedFile.txt'
-                  }
-                           }
-                          
-                          
+                  echo "sending mail" 
                   }
                   post {
-                 always {
-            archiveArtifacts artifacts: 'generatedFile.txt'
-            
-            echo 'I will always say Hello again!'
-                
-            emailext attachLog: true, attachmentsPattern: 'generatedFile.txt',
-                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [requestor()],
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-            
-        }
-    }
-                  
-                  
-                  }
-                            
+                  always {
+                  mail to: 'abhishek260297@gmail.com',
+          subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+          body: "${env.BUILD_URL} has result ${currentBuild.result}"
+          }
+          }
+          }
+          }
+          }
                   
                   
 
