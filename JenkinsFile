@@ -60,7 +60,7 @@ pipeline {
 
             stage('Email') {
                steps {
-                     emailext(to:'abhishek260297@gmail.com',subject:"Email Report from - '${env.JOB_NAME}'",body:readFile{"target/index.html"},mimeType:'text/html');
+                     emailext(to:'abhishek260297@gmail.com',subject:"Email Report from - '${env.JOB_NAME}'",body:readFile("target/index.html"),mimeType:'text/html' );
                }
                }
 }
