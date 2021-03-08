@@ -21,7 +21,7 @@ pipeline {
         stage('Clean') {
              steps  {
                 
-                bat "mvn -Dmaven.test.failure.ignore=true clean "
+                bat "mvn clean "
                    
                      }
                             }
@@ -29,7 +29,7 @@ pipeline {
            stage('Compile') {
              steps  {
                 
-                bat "mvn -Dmaven.test.failure.ignore=true compile "
+                bat "mvn compile "
                    
                      }
                             }                 
@@ -38,7 +38,7 @@ pipeline {
           stage('Test') {
              steps  {
                 
-                bat "mvn -Dmaven.test.failure.ignore=true test -P${params.profileName} "
+                bat "mvn test -P${params.profileName} "
                    
                     }
                           }
@@ -53,7 +53,7 @@ pipeline {
                   mail to: 'abhishek260297@gmail.com',
                   subject: "Email Report from - '${env.JOB_NAME}'",
                   body: readFile("target/index.html"),
-                  mimeType:'text/plain'
+                  mimeType:'text/html'
                  }
 }
 }
