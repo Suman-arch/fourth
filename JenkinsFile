@@ -40,19 +40,30 @@ pipeline {
                 
                 bat "mvn -Dmaven.test.failure.ignore=true test -P${params.profileName} "
                    
-                publishHTML target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'reports',
-                reportFiles: 'index.html',
-                reportName: 'RCov Report'
-                ]
                 }
                 }
-                }
-                }
-                    
+                
+          stage('Report') {
+             steps {
+             
+             sh ‘bundle install’
+             
+             sh ‘bundle exec rake build spec’
+             
+             archive (includes: ‘pkg/*.gem’)
+             
+             publishHTML (target : [allowMissing: false,
+             alwaysLinkToLastBuild: true,
+             keepAll: true,
+             reportDir: 'reports',
+             reportFiles: 'myreport.html',
+             reportName: 'My Reports',
+             reportTitles: 'The Report'])
+             
+             }
+             }
+        }
+        }
                             
                             
                   
