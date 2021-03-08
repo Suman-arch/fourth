@@ -50,7 +50,6 @@ pipeline {
                   }
        post {
         success {
-                  emailext(
                   attachLog:true,
                   compressLog:true,
                   mail to: 'abhishek260297@gmail.com',
@@ -59,7 +58,6 @@ pipeline {
                   </b></p><p>View console output at "<a href="${env.BUILD_URL}"> 
                    ${env.JOB_NAME}:${env.BUILD_NUMBER}</a>"</p> 
                    <p><i>(Build log is attached.)</i></p>"""
-                  )
                  }
 }
 }
