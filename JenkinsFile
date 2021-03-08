@@ -53,18 +53,9 @@ pipeline {
                   mail to: 'abhishek260297@gmail.com',
                   subject: "Email Report from - '${env.JOB_NAME}'",
                   body: readFile("target/index.html"),
-                  mimeType:'text/html'
+                  mimeType:'text/plain'
                  }
 }
 }
 }
 }
-/*
-            stage('Email') {
-               steps {
-                     emailext(to:'abhishek260297@gmail.com',subject:"Email Report from - '${env.JOB_NAME}'",body:readFile("target/index.html"),mimeType:'text/html' );
-               }
-               }
-}
-}
-*/
