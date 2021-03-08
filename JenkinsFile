@@ -1,0 +1,60 @@
+pipeline {
+    agent any
+    parameters {
+        choice(name:'profileName', choices:['Qaclick','Google'],description:'click on the profile name')
+    }
+    tools {
+
+       jdk 'Java 8'
+       maven 'Maven 3.6.3'
+     }
+
+     stages {
+         stage('Checkout') {
+             steps  {
+                
+                git 'https://github.com/Suman-arch/fourth.git'
+                   
+                     }
+                            }
+        
+        stage('Clean') {
+             steps  {
+                
+                sh "mvn clean"
+                   
+                     }
+                            }
+
+         stage('Compile') {
+             steps  {
+                
+                sh "mvn compile"
+                   
+                     }
+                            }
+
+          stage('Test') {
+             steps  {
+                
+                sh "mvn test -P"${params.profileName}""
+                   
+                     }
+                            }
+
+               }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
