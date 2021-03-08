@@ -45,6 +45,13 @@ pipeline {
                           
          stage('Download') {
             steps {
+            
+            echo "Sending email "
+                  }
+                           }
+       }
+       post {
+        success {
                   emailext attachLog: true, body:
                   """<p>EXECUTED: Job <b>\'${env.JOB_NAME}:${env.BUILD_NUMBER})\'
                   </b></p><p>View console output at "<a href="${env.BUILD_URL}"> 
@@ -55,7 +62,7 @@ pipeline {
                   replyTo: 'abhishek260297@gmail.com', 
                   subject: '${currentBuild.currentResult}',
                   Job '${env.JOB_NAME}:${env.BUILD_NUMBER}'
-                  }
-                  }
-                  }
-                  }
+                 
+}
+}
+}
