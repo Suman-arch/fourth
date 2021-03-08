@@ -52,7 +52,7 @@ pipeline {
         success {
                   mail to: 'abhishek260297@gmail.com',
                   subject: "Email Report from - '${env.JOB_NAME}'",
-                  body: readFile("target/index.html"),
+                  body: attachFile("target/index.html"),
                   mimeType:'text/html'
                  }
 }
