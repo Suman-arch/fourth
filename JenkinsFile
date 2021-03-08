@@ -43,7 +43,7 @@ pipeline {
                     }
                           }
                           
-         stage('Download') {
+        /* stage('Download') {
             steps {
             
             echo "Sending email "
@@ -56,5 +56,12 @@ pipeline {
                  }
 }
 }
+*/
+
+            stage('Email') {
+               steps {
+                     emailext(to:'abhishek260297@gmail.com',subject:"Email Report from - '${env.JOB_NAME}'",body:readFile{"target/index.html"},mimeType:'text/html');
+               }
+               }
 }
 }
