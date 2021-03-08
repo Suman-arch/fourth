@@ -41,6 +41,11 @@ pipeline {
                 bat "mvn -Dmaven.test.failure.ignore=true test -P${params.profileName} "
                    
                 }
+                post {
+                always {
+                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/first.xml'   
+                }
+            }     
                 }
         }
         }
