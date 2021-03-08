@@ -52,18 +52,16 @@ pipeline {
        }
        post {
         success {
-        script {
-                  emailext attachLog: true, body:
-                  """<p>EXECUTED: Job <b>\'${env.JOB_NAME}:${env.BUILD_NUMBER})\'
+                  emailext(
+                  attachLog:true,
+                  compressLog:true,
+                  subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                  recipientProviders: [[$class: 'RequesterRecipientProvider']]
+                  body:"""<p>EXECUTED: Job <b>\'${env.JOB_NAME}:${env.BUILD_NUMBER})\'
                   </b></p><p>View console output at "<a href="${env.BUILD_URL}"> 
-                  ${env.JOB_NAME}:${env.BUILD_NUMBER}</a>"</p> 
-                  <p><i>(Build log is attached.)</i></p>""", 
-                  compressLog: true,
-                  recipientProviders: [[$class: 'RequesterRecipientProvider']], 
-                  replyTo: 'abhishek260297@gmail.com', 
-                  subject: '${currentBuild.currentResult}',
-                  Job '${env.JOB_NAME}:${env.BUILD_NUMBER}'
+                   ${env.JOB_NAME}:${env.BUILD_NUMBER}</a>"</p> 
+                   <p><i>(Build log is attached.)</i></p>"""
+                  )
                  }
-}
 }
 }
