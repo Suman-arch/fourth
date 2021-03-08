@@ -44,14 +44,7 @@ pipeline {
                 }
                 
           stage('Report') {
-             steps {
-             
-             sh ‘bundle install’
-             
-             sh ‘bundle exec rake build spec’
-             
-             archive (includes: ‘pkg/*.gem’)
-             
+             steps {             
              publishHTML (target : [allowMissing: false,
              alwaysLinkToLastBuild: true,
              keepAll: true,
