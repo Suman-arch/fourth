@@ -43,7 +43,7 @@ pipeline {
                     }
                           }
                           
-        /* stage('Download') {
+        stage('Download') {
             steps {
             
             echo "Sending email "
@@ -51,13 +51,15 @@ pipeline {
        post {
         success {
                   mail to: 'abhishek260297@gmail.com',
-                  subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-                  body: "${env.BUILD_URL} has result ${currentBuild.result}"
+                  subject: "Email Report from - '${env.JOB_NAME}'",
+                  body: readFile("target/index.html"),
+                  mimeType:'text/html'
                  }
 }
 }
-*/
-
+}
+}
+/*
             stage('Email') {
                steps {
                      emailext(to:'abhishek260297@gmail.com',subject:"Email Report from - '${env.JOB_NAME}'",body:readFile("target/index.html"),mimeType:'text/html' );
@@ -65,3 +67,4 @@ pipeline {
                }
 }
 }
+*/
