@@ -21,18 +21,11 @@ pipeline {
         stage('Clean') {
              steps  {
                 
-                sh 'mvn clean'
+                bat "mvn -Dmaven.test.failure.ignore=true clean "
                    
                      }
                             }
 
-         stage('Compile') {
-             steps  {
-                
-                sh 'mvn compile'
-                   
-                     }
-                            }
 
           stage('Test') {
              steps  {
