@@ -7,51 +7,35 @@ pipeline {
         choice(name:'profileName', choices:['Google','Qaclick'],description:'click on the profile name')
     }
     tools {
-
        jdk 'Java 8'
        maven 'Maven 3.6.3'
      }
-
      stages {
          stage('Checkout') {
             when {
              branch 'master'
             }
              steps  {
-                
-                git 'https://github.com/Suman-arch/fourth.git'
-                   
+                git credentialsId: 'Suman Git', url: 'https://github.com/Suman-arch/fourth.git'
                      }
                             }
-        
-        stage('Clean') {
+         stage('Clean') {
              steps  {
-                
                 bat "mvn clean "
-                   
                      }
-                            }
-                            
+                            }      
            stage('Compile') {
              steps  {
-                
                 bat "mvn compile "
-                   
                      }
                             }                 
-
-
           stage('Test') {
-             steps  {
-                
+             steps  {              
                 bat "mvn test -P${params.profileName} "
-                   
                     }
-                          }
-                          
+                          } 
         stage('Download') {
             steps {
-            
             echo "Sending email "
                   }
        post {
@@ -69,10 +53,8 @@ pipeline {
                  ok "Yes"
                    }
                              }
-
          stage('Email') {
             steps {
-            
             echo "Sending email "
                   }
        post {
