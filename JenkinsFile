@@ -4,7 +4,7 @@ pipeline {
        timestamps()
     }
     parameters {
-        choice(name:'profileName', choices:['Qaclick','Google'],description:'click on the profile name')
+        choice(name:'profileName', choices:['Google','Qaclick'],description:'click on the profile name')
     }
     tools {
 
