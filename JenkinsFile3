@@ -19,13 +19,13 @@ stage('Report')
 {
 steps {
 script {
-if(currentBuild.currentResult=="FAILURE")
+if(currentBuild.currentResult=="ABORTED")
 {
 echo "I have done success"
 }
 else
 {
-echo "I have done failure"
+echo "I have done aborted"
 }
 }
 }
