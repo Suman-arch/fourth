@@ -14,7 +14,7 @@ options {
             }
              steps  {
                 git credentialsId: 'Suman Git', url: 'https://github.com/Suman-arch/fourth.git'
-                echo ${currentBuild.result}
+                echo "${currentBuild.result}"
                      }
                             }
 
