@@ -18,15 +18,14 @@ git credentialsId: 'Suman Git', url: 'https://github.com/Suman-arch/fourth.git'
 stage('Report')
 {
 steps {
-script {
-if(currentBuild.currentResult=="ABORTED")
-{
-echo "I have done success"
+echo '${currentBuild.currentResult} is the result'
 }
-else
-{
-echo "I have done aborted"
+post {
+aborted {
+echo 'Aborted process'
 }
+success {
+echo 'Success process'
 }
 }
 }
