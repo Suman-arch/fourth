@@ -13,7 +13,7 @@ agent any
                             
           stage('Result') {
              steps  {
-                echo "${currentBuild.result}"
+                echo "${currentBuild.currentResult}"
                      }
                             }                   
 
