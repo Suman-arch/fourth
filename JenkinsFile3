@@ -1,0 +1,26 @@
+pipeline {
+agent any
+options {
+timestamps()
+}
+tools {
+       jdk 'Java 8'
+       maven 'Maven 3.6.3'
+     }
+stages
+{
+stage('compile')
+{
+steps{
+if("${currentBuild.currentResult}".equals("SUCCESS"))
+{
+echo 'success process'
+}
+else
+{
+echo 'failure process'
+}
+}
+}
+}
+}
