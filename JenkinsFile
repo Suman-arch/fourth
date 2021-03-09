@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+       timestamps()
+    }
     parameters {
         choice(name:'profileName', choices:['Qaclick','Google'],description:'click on the profile name')
     }
