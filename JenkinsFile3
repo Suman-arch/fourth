@@ -19,7 +19,7 @@ stage('Report')
 {
 steps {
 script {
-if(currentBuild.currentResult=="SUCCESS")
+if(currentBuild.currentResult=="FAILURE")
 {
 echo "I have done success"
 }
