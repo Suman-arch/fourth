@@ -17,6 +17,9 @@ git credentialsId: 'Suman Git', url: 'https://github.com/Suman-arch/fourth.git'
 }
 stage('Report')
 {
+options {
+                timeout(time: 1, unit: 'MINUTE') 
+            }
 steps {
 echo "${currentBuild.currentResult} is the result"
 }
