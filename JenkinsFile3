@@ -12,6 +12,7 @@ stages
 stage('compile')
 {
 steps{
+script{
 if("${currentBuild.currentResult}".equals("SUCCESS"))
 {
 echo 'success process'
@@ -19,6 +20,7 @@ echo 'success process'
 else
 {
 echo 'failure process'
+}
 }
 }
 }
