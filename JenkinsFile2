@@ -8,9 +8,14 @@ agent any
          stage('Checkout') {
              steps  {
                 git credentialsId: 'Suman Git', url: 'https://github.com/Suman-arch/fourth.git'
-                echo "${currentBuild.result}"
                      }
                             }
+                            
+          stage('Result') {
+             steps  {
+                echo "${currentBuild.result}"
+                     }
+                            }                   
 
 }
 }
