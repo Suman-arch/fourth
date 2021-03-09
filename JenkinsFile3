@@ -18,7 +18,7 @@ git credentialsId: 'Suman Git', url: 'https://github.com/Suman-arch/fourth.git'
 stage('Report')
 {
 steps {
-echo ""${currentBuild.currentResult}" is the result"
+echo "${currentBuild.currentResult} is the result"
 }
 post {
 aborted {
