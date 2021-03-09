@@ -61,12 +61,9 @@ pipeline {
 }
 }
          stage('User input') {
-             steps {
-              echo "Asking user input"
-             }
              input {
                  message "Should we continue?"
-                 ok "yes"
+                 ok "Yes"
                    }
                              }
 
