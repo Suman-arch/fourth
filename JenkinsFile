@@ -14,6 +14,9 @@ pipeline {
 
      stages {
          stage('Checkout') {
+            when {
+             branch 'master'
+            }
              steps  {
                 
                 git 'https://github.com/Suman-arch/fourth.git'
