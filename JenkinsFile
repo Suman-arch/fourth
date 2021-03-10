@@ -39,7 +39,7 @@ pipeline {
             echo "Sending email "
                   }
        post {
-        success {
+        always {
                   mail to: 'abhishek260297@gmail.com',
                   subject: "Email Report from - '${env.JOB_NAME}'",
                   body: readFile("target/surefire-reports/emailable-report.html"),
@@ -47,19 +47,12 @@ pipeline {
                  }
              }
                           }
-                          
-         stage('User input') {
-             input {
-                 message "Should we continue?"
-                 ok "Yes"
-                   }
-                             }
          stage('Email') {
             steps {
             echo "Sending email "
                   }
        post {
-        success {
+        always {
                   mail to: 'abhishek260297@gmail.com',
                   subject: "Email Report from - '${env.JOB_NAME}'",
                   body: readFile("target/index.html"),
