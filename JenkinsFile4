@@ -1,0 +1,22 @@
+pipeline {
+agent any
+options{
+timestamps()
+}
+tools {
+jdk 'Java 8'
+       maven 'Maven 3.6.3'
+}
+stages {
+stage('checkout') {
+steps {
+git credentialsId: 'Suman Git', url: 'https://github.com/Suman-arch/fourth.git'
+}
+}
+stage('move') {
+steps {
+bat("xcopy src/extra/new.txt src/new.txt/O /X /E /H /K ")
+}
+}
+}
+}
