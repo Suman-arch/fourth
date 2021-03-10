@@ -45,8 +45,8 @@ pipeline {
                   body: readFile("target/surefire-reports/emailable-report.html"),
                   mimeType:'text/html'
                  }
-}
-}
+             }
+                          }
          stage('User input') {
              input {
                  message "Should we continue?"
