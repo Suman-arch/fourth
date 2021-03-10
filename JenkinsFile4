@@ -15,7 +15,7 @@ git credentialsId: 'Suman Git', url: 'https://github.com/Suman-arch/fourth.git'
 }
 stage('move') {
 steps {
-bat("xcopy src/extra/new.txt src/new.txt/O /X /E /H /K ")
+bat("xcopy src/extra/new.txt src/new.txt /O /X /E /H /K ")
 }
 }
 }
