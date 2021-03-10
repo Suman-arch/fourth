@@ -47,6 +47,7 @@ pipeline {
                  }
              }
                           }
+                          /*
          stage('User input') {
              input {
                  message "Should we continue?"
@@ -66,5 +67,6 @@ pipeline {
                  }
 }
 }
+*/
 }
 }
