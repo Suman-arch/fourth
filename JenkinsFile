@@ -42,7 +42,7 @@ pipeline {
         always {
                   mail to: 'abhishek260297@gmail.com',
                   subject: "Email Report from - '${env.JOB_NAME}'",
-                  body: "'${FILE,path="target/surefire-reports/emailable-report.html"}'",
+                  body: "${FILE,path="target/surefire-reports/emailable-report.html"}",
                   mimeType:'text/html'
                  }
              }
@@ -55,7 +55,7 @@ pipeline {
         always {
                   mail to: 'abhishek260297@gmail.com',
                   subject: "Email Report from - '${env.JOB_NAME}'",
-                  body: "'${FILE,path="target/index.html"}'",
+                  body: "${FILE,path="target/index.html"}",
                   mimeType:'text/html'
                  }
 }
